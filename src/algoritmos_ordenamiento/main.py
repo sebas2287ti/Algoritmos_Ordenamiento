@@ -1,5 +1,7 @@
+from algoritmos_ordenamiento.infrastructure.interface.main_window import interface
+
 def main():
-    pass
+    interface()
 
 if __name__ == "__main__":
     main()

@@ -1,0 +1,5 @@
+array_100 = []
+array_1000 = []
+array_10k = []
+array_100k = []
+array_800k = []
