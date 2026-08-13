@@ -20,16 +20,13 @@ def access_algoritms():
                 case 3:
                     quick_sort(array_dificulty())
                 case _:
-                    input("hola???")
                     raise ValueError("")
         except:
             os.system("cls")
             print(option, type(option))
             input("!Dato no valido!")
         else:
-            valid_date = False
-        finally:
-            os.system("cls")   
+            valid_date = False   
 
 def array_dificulty():
     os.system("cls")   
@@ -64,15 +61,43 @@ def array_dificulty():
             input("!Dato no valido!")
         else:
             valid_date = False
-        finally:
-            os.system("cls") 
+            
     
 
 def insertion_sort(array): 
-    pass
+    for x in range(1, len(array)):
+        selecionado = array[x]
+        j = x - 1
+
+        while (j >= 0 and selecionado < array[j]):
+            array[j + 1] = array[j]
+            j -= 1
+        array[j + 1] = selecionado
+    print_array(array)
+
 
 def selection_sort(array):
-    pass
+    n = len(array)
+    for x in range (n - 1):
+        min = x
+        for y in range(x + 1, n):
+            if array[y] < array[min]:
+                min = y
+        array[x], array[min] = array[min], array[x]
+
+    print_array(array)
+
 
 def quick_sort(array):
     pass
+
+def print_array(array):
+    os.system("cls") 
+    print("[ ", end="")
+    for x in array:
+        print(x,", ", end="")
+    print("]", end="")
+    print("")
+    input("Presiona Enter para continuar...")
+
+access_algoritms()
