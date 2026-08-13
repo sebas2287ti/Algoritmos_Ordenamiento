@@ -1,11 +1,18 @@
 import algoritmos_ordenamiento.infrastructure.data.array_default as default
 from algoritmos_ordenamiento.infrastructure.data.array_generator import get_user_array as user_array
 import os 
+import time
+
+
+start_time = 0
+end_time = 0
 
 def access_algoritms():
     os.system("cls")
     valid_date = True
     option = 0
+    global start_time
+    global end_time
     while valid_date:
         try:
             print("Que deseas hacer")
@@ -15,12 +22,16 @@ def access_algoritms():
             option = int(input("Ingresa la opcion: "))
             match option:
                 case 1:
+                    start_time = time.perf_counter()
                     insertion_sort(array_dificulty())
                 case 2:
+                    start_time = time.perf_counter()
                     selection_sort(array_dificulty())
                 case 3:
                     array = array_dificulty()
+                    start_time = time.perf_counter()
                     x = quick_sort(array, 0, len(array) - 1)
+                    end_time = time.perf_counter()
                     print_array(x)
                 case _:
                     raise ValueError("")
@@ -67,7 +78,7 @@ def array_dificulty():
             valid_date = False
 
             
-def insertion_sort(array): 
+def insertion_sort(array):
     for x in range(1, len(array)):
         selecionado = array[x]
         j = x - 1
@@ -76,6 +87,8 @@ def insertion_sort(array):
             array[j + 1] = array[j]
             j -= 1
         array[j + 1] = selecionado
+    global end_time
+    end_time = time.perf_counter()
     print_array(array)
 
 
@@ -87,9 +100,9 @@ def selection_sort(array):
             if array[y] < array[min]:
                 min = y
         array[x], array[min] = array[min], array[x]
-
+    global end_time
+    end_time = time.perf_counter()
     print_array(array)
-
 
 #quick_sort ____________________________________
 
@@ -100,7 +113,7 @@ def quick_sort(array, start, end):
         quick_sort(array, piv + 1, end)
 
     return array
-    
+
 def swap(array, x, y):
     array[x], array[y] = array[y], array[x]
 
@@ -127,4 +140,5 @@ def print_array(array):
         print(x,", ", end="")
     print("]", end="")
     print("")
+    print(f"el programa se tardo {int((end_time - start_time) * 1000)} milesegundos")
     input("Presiona Enter para continuar...")
