@@ -10,7 +10,7 @@ def access_algoritms():
             print("Que deseas hacer")
             print("1 | Ejecutar el algoritmo de ordenamiento insertion_sort")
             print("2 | Ejecutar el algoritmo de ordenamiento selection_sort")
-            print("3 | Ejecutar el algoritmo de ordenamiento quick_sort")
+            print("3 | Ejecutar el algoritmo de ordenamiento quick_sort [no esta bien implementado optimizado]" )
             option = int(input("Ingresa la opcion: "))
             match option:
                 case 1:
@@ -18,7 +18,9 @@ def access_algoritms():
                 case 2:
                     selection_sort(array_dificulty())
                 case 3:
-                    quick_sort(array_dificulty())
+                    array = array_dificulty()
+                    x = quick_sort(array, 0, len(array) - 1)
+                    print_array(x)
                 case _:
                     raise ValueError("")
         except:
@@ -87,9 +89,33 @@ def selection_sort(array):
 
     print_array(array)
 
+#quick_sort ____________________________________
 
-def quick_sort(array):
-    pass
+def quick_sort(array, start, end):
+    if start < end:
+        piv = partition(array, start, end)
+        quick_sort(array, start, piv - 1)
+        quick_sort(array, piv + 1, end)
+
+    return array
+    
+def swap(array, x, y):
+    array[x], array[y] = array[y], array[x]
+
+def partition(array, start, end):
+    piv = array[end]
+
+    x = start - 1
+
+    for y in range(start, end):
+        if (array[y] < piv):
+            x += 1
+            swap(array, x, y)
+
+    swap(array, x + 1, end)
+    return x + 1
+
+#quick_sort ____________________________________
 
 def print_array(array):
     os.system("cls") 
@@ -99,5 +125,3 @@ def print_array(array):
     print("]", end="")
     print("")
     input("Presiona Enter para continuar...")
-
-access_algoritms()
