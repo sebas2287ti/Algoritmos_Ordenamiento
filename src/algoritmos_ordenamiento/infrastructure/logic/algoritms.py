@@ -58,7 +58,7 @@ def array_dificulty():
                 case 6:
                     pass
                 case _:
-                    raise ValueError("")
+                    raise ValueError("Error option")
         except:
             os.system("cls")
             input("!Dato no valido!")
