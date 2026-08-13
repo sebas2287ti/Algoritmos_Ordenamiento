@@ -1,4 +1,5 @@
 import algoritmos_ordenamiento.infrastructure.data.array_default as default
+from algoritmos_ordenamiento.infrastructure.data.array_generator import get_user_array as user_array
 import os 
 
 def access_algoritms():
@@ -30,6 +31,7 @@ def access_algoritms():
         else:
             valid_date = False   
 
+
 def array_dificulty():
     os.system("cls")   
     valid_date = True
@@ -47,15 +49,15 @@ def array_dificulty():
                 case 1:
                     return default.array_100
                 case 2:
-                    return default.array_1000
+                    return default.array_1000()
                 case 3:
-                    return default.array_10k
+                    return default.array_10k()
                 case 4:
-                    return default.array_100k
+                    return default.array_100k()
                 case 5:
-                    return default.array_800k
+                    return default.array_800k()
                 case 6:
-                    pass
+                    return user_array
                 case _:
                     raise ValueError("Error option")
         except:
@@ -63,9 +65,8 @@ def array_dificulty():
             input("!Dato no valido!")
         else:
             valid_date = False
-            
-    
 
+            
 def insertion_sort(array): 
     for x in range(1, len(array)):
         selecionado = array[x]
@@ -88,6 +89,7 @@ def selection_sort(array):
         array[x], array[min] = array[min], array[x]
 
     print_array(array)
+
 
 #quick_sort ____________________________________
 
@@ -116,6 +118,7 @@ def partition(array, start, end):
     return x + 1
 
 #quick_sort ____________________________________
+
 
 def print_array(array):
     os.system("cls") 
