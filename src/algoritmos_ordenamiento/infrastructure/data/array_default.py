@@ -12,13 +12,21 @@ array_100 = [48, 15, 92, 3, 71, 29, 84, 10, 63, 37,
             80, 53, 100, 49, 72, 42, 68, 55, 76, 90]
 def array_1000():
     array = random.sample(range(1, 1001), 1000)
+    print(array)
+    input("Presiona para continuar")
     return array
 def array_10k():
     array = random.sample(range(1, 10001), 10000)
+    print(array)
+    input("Presiona para continuar")
     return array
 def array_100k():   
     array = random.sample(range(1, 100001), 100000)
+    print(array)
+    input("Presiona enter para continuar")
     return array
 def array_800k():
     array = random.sample(range(1, 800001), 800000)
+    print(array)
+    input("Presiona enter para continuar")
     return array

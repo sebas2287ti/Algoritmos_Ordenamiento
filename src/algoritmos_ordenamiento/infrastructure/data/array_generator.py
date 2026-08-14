@@ -1,11 +1,9 @@
 import random
-
-user_array = []
+import os
 
 def generator_array():
-    global user_array
     long = int(input("ingresa el tamaño del array"))
     user_array = random.sample(range(1, long + 1), long)
-
-def get_user_array():
+    print(user_array)
+    input("Presiona enter para continuar")
     return user_array

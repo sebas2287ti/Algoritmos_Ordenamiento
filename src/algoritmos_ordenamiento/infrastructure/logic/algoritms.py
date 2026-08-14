@@ -1,5 +1,5 @@
 import algoritmos_ordenamiento.infrastructure.data.array_default as default
-from algoritmos_ordenamiento.infrastructure.data.array_generator import user_array
+from algoritmos_ordenamiento.infrastructure.data.array_generator import generator_array as user_array
 import os 
 import time
 
@@ -25,7 +25,7 @@ def access_algoritms():
                 case 1:
                     start_time = time.perf_counter()
                     x =insertion_sort(array_dificulty())
-                    print(x)
+                    print_array(x)
                 case 2:
                     start_time = time.perf_counter()
                     x = selection_sort(array_dificulty())
