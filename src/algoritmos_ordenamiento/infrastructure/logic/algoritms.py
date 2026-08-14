@@ -15,52 +15,35 @@ def access_algoritms():
     global end_time
     while valid_date:
         try:
+            os.system("cls")
             print("Que deseas hacer")
             print("1 | Ejecutar el algoritmo de ordenamiento insertion_sort")
             print("2 | Ejecutar el algoritmo de ordenamiento selection_sort")
             print("3 | Ejecutar el algoritmo de ordenamiento quick_sort [no esta bien implementado optimizado]" )
-            print("4 | Ejecutar test de algoritmos [Se ejecutan los 3 con el mismo array]")
             option = int(input("Ingresa la opcion: "))
             match option:
                 case 1:
-                    start_time = time.perf_counter()
-                    x =insertion_sort(array_dificulty())
-                    print_array(x)
+                    valid_option = True
+                    while valid_option:
+                        array=array_dificulty()
+                        start_time = time.perf_counter()
+                        x =insertion_sort(array)
+                        print_array(x)
                 case 2:
-                    start_time = time.perf_counter()
-                    x = selection_sort(array_dificulty())
-                    print(x)
+                    valid_option = True
+                    while valid_option:
+                        array=array_dificulty()
+                        start_time = time.perf_counter()
+                        x = selection_sort(array)
+                        print_array(x)
                 case 3:
-                    array = array_dificulty()
-                    start_time = time.perf_counter()
-                    x = quick_sort(array, 0, len(array) - 1)
-                    end_time = time.perf_counter()
-                    print_array(x)
-                case 4:
-                    insertion_times = []
-                    selection_times = []
-                    array = array_dificulty()
-                    for x in range(10):
-                        copy_array = array.copy()
-                        start_time = 0
-                        end_time = 0
-
+                    valid_option = True
+                    while valid_option:
+                        array = array_dificulty()
                         start_time = time.perf_counter()
-                        x = insertion_sort(copy_array)
+                        x = quick_sort(array, 0, len(array) - 1)
                         end_time = time.perf_counter()
-
-                        insertion_times.append(int((end_time - start_time)*1000))
-                        
-                        start_time = time.perf_counter()
-                        x = selection_sort(copy_array)
-                        end_time = time.perf_counter()
-                        
-                        selection_times.append(int((end_time - start_time) * 1000))
-
-                    print(selection_times)
-                    print(insertion_times)
-                    input("Presiona para continuar")
-                    os.system("cls")
+                        print_array(x)
                 case _:
                     raise ValueError("")
         except:
@@ -77,26 +60,18 @@ def array_dificulty():
     while valid_date:
         try:
             print("Selecciona la dificulta para el algoritmo")
-            print("1 | Easy 100 elemento")
-            print("2 | Easy_medium 1000 elementos")
-            print("3 | Medium 10k elementos")
-            print("4 | Medium-hard 100k elementos")
-            print("5 | Hard 800k elementos")
-            print("6 | Personalizado")
+            print("1 | Menor a mayor")
+            print("2 | Mayor a menor")
+            print("3 | Aleatorio")
+
             option = int(input("Ingresa la opcion: "))
             match option:
                 case 1:
-                    return default.array_100
+                    return default.ordenado()
                 case 2:
-                    return default.array_1000()
+                    return default.desordenado()
                 case 3:
-                    return default.array_10k()
-                case 4:
-                    return default.array_100k()
-                case 5:
-                    return default.array_800k()
-                case 6:
-                    return user_array()
+                    return user_array() 
                 case _:
                     raise ValueError("Error option")
         except:
@@ -168,5 +143,5 @@ def print_array(array):
         print(x,", ", end="")
     print("]", end="")
     print("")
-    print(f"el programa se tardo {int((end_time - start_time) * 1000)} milesegundos")
+    print(f"el programa se tardo {float((end_time - start_time) * 1000)} milesegundos")
     input("Presiona Enter para continuar...")

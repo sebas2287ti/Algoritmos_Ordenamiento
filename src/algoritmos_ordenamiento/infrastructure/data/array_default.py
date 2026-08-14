@@ -1,5 +1,5 @@
 import random
-
+import os 
 array_100 = [48, 15, 92, 3, 71, 29, 84, 10, 63, 37, 
             99, 21, 56, 8, 77, 41, 14, 88, 2, 65,
             33, 90, 19, 52, 7, 73, 26, 95, 4, 61,
@@ -30,3 +30,17 @@ def array_800k():
     print(array)
     input("Presiona enter para continuar")
     return array
+
+def ordenado():
+    os.system("cls")
+    array = []
+    n = input("Ingresa el tamaño del array: ")
+    for x in range(int(n)):
+        array.append(x)
+    print(array)
+    input("Presiona enter para continuar")
+    return array
+
+def desordenado():
+    array = ordenado()
+    return array[::-1]
